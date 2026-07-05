@@ -29,14 +29,14 @@ class MarkFetchedWallpapersAsImported extends Command
         $this->info("Memulai proses dengan chunk size: {$chunkSize}");
 
         DB::table('fetched_wallpapers')
-            ->select('id', 'source_api', 'status')
-            ->whereNotNull('source_api')
+            ->select('id', 'source_url', 'status')
+            ->whereNotNull('source_url')
             ->where('status', '!=', 'imported')
             ->orderBy('id')
             ->chunkById($chunkSize, function ($rows) use (&$totalScanned, &$totalMatched, &$totalUpdated) {
                 $totalScanned += $rows->count();
 
-                $sourceUrls = $rows->pluck('source_api')
+                $sourceUrls = $rows->pluck('source_url')
                     ->filter()
                     ->unique()
                     ->values();
@@ -46,8 +46,8 @@ class MarkFetchedWallpapersAsImported extends Command
                 }
 
                 $matchedSourceUrls = DB::table('wallpapers')
-                    ->whereIn('source_api', $sourceUrls)
-                    ->pluck('source_api');
+                    ->whereIn('source_url', $sourceUrls)
+                    ->pluck('source_url');
 
                 if ($matchedSourceUrls->isEmpty()) {
                     $this->line("Scanned: {$totalScanned} | Matched: {$totalMatched} | Updated: {$totalUpdated}");
@@ -55,7 +55,7 @@ class MarkFetchedWallpapersAsImported extends Command
                 }
 
                 $matchedIds = $rows
-                    ->whereIn('source_api', $matchedSourceUrls)
+                    ->whereIn('source_url', $matchedSourceUrls)
                     ->pluck('id')
                     ->values();
 
