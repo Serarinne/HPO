@@ -330,10 +330,17 @@ class FetchedWallpaperController extends Controller
             ], 500);
         }
 
-        ProcessFetchedWallpaperJob::dispatch(
-            $fetch->id,
-            $existingWallpaper->id
-        );
+        // ProcessFetchedWallpaperJob::dispatch(
+        //     $fetch->id,
+        //     $existingWallpaper->id
+        // );
+
+        $request = new \Illuminate\Http\Request([
+            'fetchedId' => $fetch->id,
+            'targetId' => $existingWallpaper->id
+        ]);
+
+        app(\App\Http\Controllers\ProcessFetchedWallpaperController::class)->process($request);
 
         return response()->json([
             'status' => 'success',
