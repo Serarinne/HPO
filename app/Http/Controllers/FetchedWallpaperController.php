@@ -163,7 +163,7 @@ class FetchedWallpaperController extends Controller
                 $duplicates[] = [
                     'id' => $match->id,
                     'slug' => $match->slug,
-                    'thumbnail_url' => $match->thumbnail_webp ?? $match->thumbnail,
+                    'thumbnail_url' => $match->thumbnail['webp'] ?? $match->thumbnail['jpg'],
                     'width' => $match->width,
                     'height' => $match->height,
                     'distance' => '100% (Same Source URL)',

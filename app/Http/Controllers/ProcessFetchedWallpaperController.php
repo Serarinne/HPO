@@ -51,7 +51,7 @@ class ProcessFetchedWallpaperController extends Controller
                 throw new \Exception("Queue data not found.");
             }
 
-            $downloadUrl = $fetchedItem->original ?? $fetchedItem->source_url;
+            $downloadUrl = $fetchedItem->original;
             if (!$downloadUrl) {
                 throw new \Exception("Source URL is empty.");
             }
