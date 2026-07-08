@@ -520,17 +520,18 @@
                         card.style.transition = "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
                         
                         const img = card.querySelector('img');
-                        if (img) img.style.filter = "brightness(0.2) grayscale(100%)";
+                        if (img) img.style.filter = "brightness(0.8)";
                         
                         const overlayDiv = card.querySelector('div.cursor-pointer');
                         if (overlayDiv) {
                             overlayDiv.style.position = 'relative';
-                            overlayDiv.insertAdjacentHTML('beforeend', '<div class="absolute inset-0 bg-slate-950/80 z-30 flex items-center justify-center backdrop-blur-sm"><i class="fa-solid fa-check text-4xl text-cyan-500 opacity-50"></i></div>');
+                            overlayDiv.insertAdjacentHTML('beforeend', '<div class="absolute inset-0 z-30 flex items-center justify-center pointer-events-none"><div class="bg-slate-900/60 rounded-full p-2 shadow-[0_0_15px_rgba(34,211,238,0.4)]"><i class="fa-solid fa-check text-4xl text-cyan-400"></i></div></div>');
                         }
                         
                         card.style.pointerEvents = 'none';
-                        card.style.opacity = '0.4';
+                        card.style.opacity = '0.85';
                         card.style.transform = 'translateY(-4px)';
+                        card.style.borderColor = 'rgba(34, 211, 238, 0.5)';
                     }
                 },
                 
