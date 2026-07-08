@@ -170,9 +170,9 @@
             {{ $fetchedWallpapers->links('components.pagination') }}
             @endif
 
-            <div class="columns-3 md:columns-4 lg:columns-5 xl:columns-5 gap-5 space-y-5 relative z-10">
+            <div class="columns-3 md:columns-4 lg:columns-5 xl:columns-5 gap-5 relative z-10">
                 @forelse($fetchedWallpapers as $wp)
-                    <div id="card-{{ $wp->id }}" class="break-inside-avoid relative group rounded-[1.5rem] overflow-hidden bg-slate-900/60 border backdrop-blur-sm shadow-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transform hover:-translate-y-1 transition-all duration-300 {{ $wp->is_duplicate ? 'border-rose-500/40 hover:border-rose-500/60 shadow-[0_0_15px_rgba(244,63,94,0.15)]' : 'border-white/5 hover:border-cyan-500/30' }}">
+                    <div id="card-{{ $wp->id }}" class="mb-5 break-inside-avoid relative group rounded-[1.5rem] overflow-hidden bg-slate-900/60 border backdrop-blur-sm shadow-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transform hover:-translate-y-1 transition-all duration-300 {{ $wp->is_duplicate ? 'border-rose-500/40 hover:border-rose-500/60 shadow-[0_0_15px_rgba(244,63,94,0.15)]' : 'border-white/5 hover:border-cyan-500/30' }}">
                         
                         <button @click.stop="deleteItem({{ $wp->id }})" class="absolute top-3 left-3 z-30 w-8 h-8 flex items-center justify-center rounded-lg bg-slate-950/80 text-slate-400 hover:bg-rose-500 hover:text-white border border-white/10 backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 shadow-lg cursor-pointer outline-none" title="Delete Permanently">
                             <i class="fa-solid fa-trash text-xs"></i>
@@ -527,7 +527,7 @@
                         }
                         card.style.pointerEvents = 'none';
                         card.style.opacity = '0.4';
-                        card.style.transform = 'scale(0.95)';
+                        card.style.transform = 'translateY(-4px)';
                     }
                 },
                 
