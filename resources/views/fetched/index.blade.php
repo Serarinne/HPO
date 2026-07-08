@@ -518,13 +518,16 @@
                     const card = document.getElementById(`card-${id}`);
                     if (card) {
                         card.style.transition = "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
+                        
                         const img = card.querySelector('img');
                         if (img) img.style.filter = "brightness(0.2) grayscale(100%)";
-                        const overlayDiv = card.querySelector('.cursor-pointer');
+                        
+                        const overlayDiv = card.querySelector('div.cursor-pointer');
                         if (overlayDiv) {
                             overlayDiv.style.position = 'relative';
                             overlayDiv.insertAdjacentHTML('beforeend', '<div class="absolute inset-0 bg-slate-950/80 z-30 flex items-center justify-center backdrop-blur-sm"><i class="fa-solid fa-check text-4xl text-cyan-500 opacity-50"></i></div>');
                         }
+                        
                         card.style.pointerEvents = 'none';
                         card.style.opacity = '0.4';
                         card.style.transform = 'translateY(-4px)';
